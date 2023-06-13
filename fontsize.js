@@ -8,9 +8,9 @@
 
     function FontSize(dom, options) {
         var defaultSettings = {
-            step: 2,
-            increaseTimes: 2, // 放大次数
-            reduceTimes: 2, // 缩小次数
+            step: 1,
+            increaseTimes: 1, // 放大次数
+            reduceTimes: 1, // 缩小次数
             increaseBtn: '.zoomin',
             reduceBtn: '.zoomout'
         };
@@ -64,7 +64,7 @@
                 fn && fn.call(node);
             }
 
-            for (var i = 0, l = childNodes.length; i < l; i++) {
+            for (var i = 0, l = childNodes.length; i < l; i+) {
                 this._loopNode(childNodes[i], fn);
             }
         }
