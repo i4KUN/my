@@ -1,18 +1,17 @@
-function searchFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#searchIn').on('input', function(){
+    var searchTerm = $(this).val().toLowerCase();
+    $.ajax({
+      url: '/feeds/posts/default?q=' + searchTerm + '&alt=json',
+      type: 'GET',
+      success: function(data){
+        // عرض النتائج هنا
+        // يمكنك استخدام دوال jQuery لتحديد مكان عرض النتائج وإضافتها إليه
+        console.log(data); // مثال: طباعة البيانات في وحدة التحكم للتحقق من عملية البحث
       }
-    }
-  }
-}
+    });
+  });
+});
+</script>
